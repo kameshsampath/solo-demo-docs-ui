@@ -34,7 +34,7 @@ jobs:
         env:
           TAG_NAME: ${{ github.event.release.tag_name }}
           ASSET_NAME: "ui-bundle.zip"
-          ASSET_FILE: "${{ env.GITHUB_WORKSPACE }}/build/ui-bundle.zip"
+          ASSET_FILE: "build/ui-bundle.zip"
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
