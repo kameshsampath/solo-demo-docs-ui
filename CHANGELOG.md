@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.4](https://www.github.com/kameshsampath/solo-demo-docs-ui/compare/v0.1.3...v0.1.4) (2021-07-11)
+
+
+### Bug Fixes
+
+* release name ([302860e](https://www.github.com/kameshsampath/solo-demo-docs-ui/commit/302860ee1607e904cf9941f7a3a49167b7243157))
+
 ### [0.1.3](https://www.github.com/kameshsampath/solo-demo-docs-ui/compare/v0.1.2...v0.1.3) (2021-07-11)
 
 
