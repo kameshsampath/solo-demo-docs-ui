@@ -1,10 +1,10 @@
-= RedHat Scholars UI
+= Solo Demos Documentation Site UI
 // Settings:
 :experimental:
 :hide-uri-scheme:
 // Project URLs:
-:url-project: https://github.com/redhat-scholars/course-ui
-:url-preview: https://redhat-scholars.github.io/course-ui
+:url-project: https://github.com/kameshsampath/solo-demo-docs-ui
+:url-preview: https://github.com/kameshsampath/solo-demo-docs-ui
 :url-ci-pipelines: {url-project}/pipelines
 :img-ci-status: {url-project}/badges/master/pipeline.svg
 // External URLs:
@@ -80,15 +80,15 @@ Follow the {url-nvm-install}[nvm installation instructions] to set up nvm on you
 
 Once you've installed nvm, open a new terminal and install Node.js 10 using the following command:
 
- $ nvm install 10
+ $ nvm install 14
 
 You can switch to this version of Node.js at any time using the following command:
 
- $ nvm use 10
+ $ nvm use 14
 
 To make Node.js 10 the default in new terminals, type:
 
- $ nvm alias default 10
+ $ nvm alias default 14
 
 Now that you have Node.js installed, you can proceed with installing the Gulp CLI.
 
