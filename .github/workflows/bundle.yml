@@ -22,6 +22,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: npm -g install gulp-cli
+      - name: Install Packages
+        run: npm install
       - name: Build and Bundle UI
         run: gulp bundle
       - name: Create Release
