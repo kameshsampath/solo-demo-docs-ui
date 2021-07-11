@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.3](https://www.github.com/kameshsampath/solo-demo-docs-ui/compare/v0.1.2...v0.1.3) (2021-07-11)
+
+
+### Bug Fixes
+
+* use relative directory ([37f6a51](https://www.github.com/kameshsampath/solo-demo-docs-ui/commit/37f6a51568d8c9cd6ab016b4b724df17526dbe24))
+
 ### [0.1.2](https://www.github.com/kameshsampath/solo-demo-docs-ui/compare/v0.1.1...v0.1.2) (2021-07-11)
 
 
