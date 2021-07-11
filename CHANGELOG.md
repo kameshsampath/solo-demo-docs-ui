@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.2](https://www.github.com/kameshsampath/solo-demo-docs-ui/compare/v0.1.1...v0.1.2) (2021-07-11)
+
+
+### Bug Fixes
+
+* add package install to release ([9d256a9](https://www.github.com/kameshsampath/solo-demo-docs-ui/commit/9d256a9218717c8172f23c5bd32085745258386c))
+
 ### [0.1.1](https://www.github.com/kameshsampath/solo-demo-docs-ui/compare/v0.1.0...v0.1.1) (2021-07-11)
 
 
