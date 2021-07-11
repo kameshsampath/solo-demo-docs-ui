@@ -1,0 +1,33 @@
+name: Bundle UI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm -g install gulp-cli
+      - name: Build and Bundle UI
+        run: gulp bundle
+      - name: Create Release
+        uses: google-github-actions/release-please-action@v2.28.1
+        with:
+          # GitHub token for creating and grooming release PRs, defaults to using secrets.GITHUB_TOKEN
+          token: ${{ secrets.GH_WORKFLOW_PAT }}
+          bump-minor-pre-major: true
+          release-type: simple

@@ -1,0 +1,69 @@
+name: Release Artifacts
+
+on:
+  release:
+    types:
+      - "released"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm -g install gulp-cli
+
+      - name: Build and Bundle UI
+        run: gulp bundle
+
+      - name: "Attach Artifacts to Release"
+        uses: actions/github-script@v4.0.1
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+          ASSET_NAME: "ui-bundle.zip"
+          ASSET_FILE: "${{ workspace }}/build/ui-bundle.zip"
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const fs = require('fs')
+            const {TAG_NAME} = process.env
+            const {ASSET_FILE} = process.env
+            const {ASSET_NAME} = process.env
+            const {payload} = context
+
+            const owner = payload.repository.owner.login
+            const repo =  payload.repository.name
+
+            // console.log("Context Repository %s and Owner is %s",repo,owner)
+
+             const { data } = await github.request(`GET /repos/${owner}/${repo}/releases/tags/{tag}`, {
+               tag: TAG_NAME
+             }).catch(err => {
+               console.error("Error getting release %s", JSON.stringify(err.errors))
+             })
+
+             const upload_url = data.upload_url
+
+             const uploadAsset = await github.request({
+              method: "POST",
+              url: upload_url,
+              name: `${ASSET_NAME}.zip`,
+              headers: {
+                "content-type": "application/zip",
+              },
+              data: fs.readFileSync(ASSET_FILE)
+             }).catch(err => {
+               console.log("Error uploading asset %s", err)
+             })
+
+            console.log("Asset upload --> %s ",uploadAsset)
